@@ -1,0 +1,5 @@
+#!/bin/bash
+service ssh start
+pkill -9 jupyterlab
+rm -rf /var/log/jupyterlab.log
+nohup jupyter lab --ip=0.0.0.0 --port=8888 --allow-root 1>/var/log/jupyterlab.log 2>&1 &

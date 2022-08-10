@@ -1,0 +1,8 @@
+#!/bin/bash
+service ssh start
+pkill -9 jupyterhub
+pkill -9 node
+rm -rf /var/log/jupyterhub.log
+cd /root/.jupyter/
+nohup /usr/local/bin/jupyterhub -f /root/.jupyter/jupyterhub_config.py 1>/var/log/jupyterhub.log 2>&1 &
+cd -
